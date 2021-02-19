@@ -5,11 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { TimeTrackerComponent } from './time-tracker/time-tracker.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LogInComponent,
+    TimeTrackerComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
