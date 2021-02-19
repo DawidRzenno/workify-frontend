@@ -8,6 +8,9 @@ import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { TimeTrackerComponent } from './time-tracker/time-tracker.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { NotepadComponent } from './notepad/notepad.component';
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HomeComponent,
     LogInComponent,
     TimeTrackerComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CalendarComponent,
+    NotepadComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
