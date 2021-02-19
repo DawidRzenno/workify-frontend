@@ -5,10 +5,10 @@
       <div ngbDropdown class="d-inline-block">
         <button class="btn btn-primary" id="dropdownColumns" ngbDropdownToggle>Columns ({{12 / colWidth}})</button>
         <div ngbDropdownMenu aria-labelledby="dropdownColumns">
-          <button ngbDropdownItem (click)="colWidth = 12">1</button>
-          <button ngbDropdownItem (click)="colWidth = 6">2</button>
-          <button ngbDropdownItem (click)="colWidth = 4">3</button>
-          <button ngbDropdownItem (click)="colWidth = 3">4</button>
+          <button ngbDropdownItem (click)="setAndStoreColWidth(12)">1</button>
+          <button ngbDropdownItem (click)="setAndStoreColWidth(6)">2</button>
+          <button ngbDropdownItem (click)="setAndStoreColWidth(4)">3</button>
+          <button ngbDropdownItem (click)="setAndStoreColWidth(3)">4</button>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
     >
       <div class="card h-100">
         <div class="card-body">
-          <h5 class="mb-4"><a [routerLink]="'/project/' + project.id">
+          <h5 class="mb-4"><a [routerLink]="'./project/' + project.id">
             Project "{{project.name}}" ({{project.id}})
           </a></h5>
           <div class="ml-2 mb-3">

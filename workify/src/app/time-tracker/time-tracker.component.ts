@@ -18,6 +18,16 @@ export class TimeTrackerComponent implements OnInit {
 
   ngOnInit(): void {
     this.projects = this.timeTrackerService.getProjects();
+    this.colWidth = this.storedColWidth ? this.storedColWidth : this.colWidth;
+  }
+
+  setAndStoreColWidth(colWidth: number): void {
+    this.colWidth = colWidth;
+    localStorage.setItem('colWidth', JSON.stringify(colWidth));
+  }
+
+  get storedColWidth(): number {
+    return JSON.parse(localStorage.getItem('colWidth') as string);
   }
 
   // getFilteredEntries(id: string): IEntry[] {

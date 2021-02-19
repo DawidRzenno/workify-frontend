@@ -15,7 +15,8 @@ export class TimeTrackerService {
     projects: TimeTrackerService.projects
   };
 
-  constructor() {}
+  constructor() {
+  }
 
   private static get projects(): IProject[] {
     const projects: IProject[] = [];
@@ -32,6 +33,10 @@ export class TimeTrackerService {
 
   public getProjects(): IProject[] {
     return this.fakeDatabase.projects;
+  }
+
+  public getProjectById(id: string): IProject {
+    return this.fakeDatabase.projects.filter(project => project.id = id)[0];
   }
 
 }
