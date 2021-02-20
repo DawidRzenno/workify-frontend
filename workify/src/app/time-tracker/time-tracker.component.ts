@@ -29,9 +29,4 @@ export class TimeTrackerComponent implements OnInit {
   get storedColWidth(): number {
     return JSON.parse(localStorage.getItem('colWidth') as string);
   }
-
-  // getFilteredEntries(id: string): IEntry[] {
-  //   return this.entries.filter(entry => entry.projectId === id);
-  // }
-
 }
