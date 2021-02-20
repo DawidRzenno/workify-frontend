@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="logInForm" (ngSubmit)="logIn()">
   <div class="container container-fluid mt-5">
     <div class="row">
       <div class="col-12 d-flex justify-content-center">
@@ -6,48 +6,73 @@
           <h3 class="mb-4">
             Log in
           </h3>
-
           <div class="w-100 mb-3">
-            <label for="username">Username</label>
+            <label for="email">Email</label>
             <input
-              id="username"
-              type="text"
+              formControlName="email"
+              id="email"
+              type="email"
               class="form-control"
-              aria-label="Username"
+              aria-label="Email"
+              required
             />
+            <div
+              *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+              class="mt-1 alert alert-danger"
+            >
+              <div *ngIf="email?.errors?.required">
+                Email is required.
+              </div>
+              <div *ngIf="email?.errors?.minlength">
+                Invalid email format.
+              </div>
+            </div>
           </div>
 
           <div class="w-100 mb-3">
             <label for="password">Password</label>
             <input
+              formControlName="password"
               id="password"
               type="password"
               class="form-control"
               aria-label="Password"
+              required
             />
+            <div
+              *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+              class="mt-1 alert alert-danger"
+            >
+              <div *ngIf="password?.errors?.required">
+                Password is required.
+              </div>
+              <div *ngIf="password?.errors?.minlength">
+                Passwords here are at least 8 characters long.
+              </div>
+            </div>
           </div>
           <div class="w-100 mb-3">
             <div class="form-check ml-2">
               <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
+                formControlName="rememberMe"
                 id="rememberMe"
-                checked
+                type="checkbox"
+                class="form-check-input"
               >
               <label
                 class="form-check-label"
                 for="rememberMe"
               >
-                Remember me
+                Remember me (todo)
               </label>
             </div>
           </div>
           <div class="w-100 mb-3">
-            <button class="btn btn-primary w-100">Log me in!</button>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!logInForm.valid">Log me in!</button>
           </div>
-          <div class="w-100 mb-3">
-            <a routerLink="/password-reset">Password reset</a>
+          <div class="w-100 mb-3 d-flex justify-content-between">
+            <a routerLink="/password-reset" disabled>Reset password</a>
+            <a routerLink="/password-reset" disabled>Create an account</a>
           </div>
         </div>
       </div>
