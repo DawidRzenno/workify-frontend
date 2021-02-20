@@ -1,0 +1,107 @@
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+  <div class="container container-fluid mt-5">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <div style="width: 350px">
+          <h3 class="mb-4">
+            Register
+          </h3>
+          <div class="w-100 mb-3">
+            <label for="name">Name</label>
+            <input
+              formControlName="name"
+              id="name"
+              type="text"
+              class="form-control"
+              aria-label="Name"
+              required
+            />
+            <div
+              *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+              class="mt-1 alert alert-danger"
+            >
+              <div *ngIf="name?.errors?.required">
+                Name is required.
+              </div>
+              <div *ngIf="name?.errors?.minlength">
+                Name must be at least 4 characters long.
+              </div>
+            </div>
+          </div>
+
+          <div class="w-100 mb-3">
+            <label for="email">Email</label>
+            <input
+              formControlName="email"
+              id="email"
+              type="email"
+              class="form-control"
+              aria-label="Email"
+              required
+            />
+            <div
+              *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+              class="mt-1 alert alert-danger"
+            >
+              <div *ngIf="email?.errors?.required">
+                Email is required.
+              </div>
+              <div *ngIf="email?.errors?.minlength">
+                Invalid email format.
+              </div>
+            </div>
+          </div>
+
+          <div class="w-100 mb-3">
+            <label for="password">Password</label>
+            <input
+              formControlName="password"
+              id="password"
+              type="password"
+              class="form-control"
+              aria-label="Password"
+              required
+            />
+            <div
+              *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+              class="mt-1 alert alert-danger"
+            >
+              <div *ngIf="password?.errors?.required">
+                Password is required.
+              </div>
+              <div *ngIf="password?.errors?.minlength">
+                Password must be at least 8 characters long.
+              </div>
+            </div>
+          </div>
+
+          <div class="w-100 mb-3">
+            <label for="password">Password confirmation</label>
+            <input
+              formControlName="passwordConfirmation"
+              id="passwordConfirmation"
+              type="password"
+              class="form-control"
+              aria-label="Password confirmation"
+              required
+            />
+            <div
+              *ngIf="passwordConfirmation?.invalid && (passwordConfirmation?.dirty || passwordConfirmation?.touched)"
+              class="mt-1 alert alert-danger"
+            >
+              <div *ngIf="passwordConfirmation?.errors?.required">
+                Password confirmation is required.
+              </div>
+            </div>
+          </div>
+          <div class="w-100 mb-3">
+            <a routerLink="/log-in" disabled>Hey, I have an account already!</a>
+          </div>
+          <div class="w-100 mb-3">
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!registerForm.valid">Register me!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

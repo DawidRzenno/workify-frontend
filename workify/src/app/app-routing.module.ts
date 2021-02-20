@@ -7,6 +7,7 @@ import {TimeTrackerComponent} from './time-tracker/time-tracker.component';
 import {CalendarComponent} from './calendar/calendar.component';
 import {NotepadComponent} from './notepad/notepad.component';
 import {ProjectComponent} from './project/project.component';
+import {RegisterComponent} from './register/register.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'log-in',
     component: LogInComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   },
   {
     path: 'not-found',

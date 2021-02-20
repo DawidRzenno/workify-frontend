@@ -11,6 +11,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { NotepadComponent } from './notepad/notepad.component';
 import { ProjectComponent } from './project/project.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +24,16 @@ import { ProjectComponent } from './project/project.component';
     NotFoundComponent,
     CalendarComponent,
     NotepadComponent,
-    ProjectComponent
+    ProjectComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
