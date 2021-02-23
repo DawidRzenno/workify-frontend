@@ -98,7 +98,7 @@
             <a routerLink="/log-in" disabled>Hey, I have an account already!</a>
           </div>
           <div class="w-100 mb-3">
-            <button type="submit" class="btn btn-primary w-100" [disabled]="!registerForm.valid">Register me!</button>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!registerForm.valid || loading">Register me!</button>
           </div>
         </div>
       </div>
