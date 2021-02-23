@@ -21,55 +21,63 @@
       id="navbarSupportedContent"
     >
       <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/home"
-            routerLinkActive="active"
-          >Home</a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/time-tracker"
-            routerLinkActive="active"
-          >Time Tracker</a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/calendar"
-            routerLinkActive="active"
-          >Calendar</a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/notepad"
-            routerLinkActive="active"
-          >Notepad</a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/log-in"
-            routerLinkActive="active"
-          >Log in</a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/register"
-            routerLinkActive="active"
-          >Register</a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link disabled"
-            routerLink="/log-out"
-            routerLinkActive="active"
-          >Log out</a>
-        </li>
+        <ng-container [ngSwitch]="!!user">
+          <ng-template [ngSwitchCase]="false">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink="/log-in"
+                routerLinkActive="active"
+              >Log in</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink="/register"
+                routerLinkActive="active"
+              >Register</a>
+            </li>
+          </ng-template>
+          <ng-template [ngSwitchCase]="true">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink="/home"
+                routerLinkActive="active"
+              >Home</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink="/time-tracker"
+                routerLinkActive="active"
+              >Time Tracker</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink="/calendar"
+                routerLinkActive="active"
+              >Calendar</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink="/notepad"
+                routerLinkActive="active"
+              >Notepad</a>
+            </li>
+            <li class="nav-item ml-2 d-flex align-items-center">
+              <div ngbDropdown placement="bottom-right" class="d-inline-block" display="dynamic">
+                <button class="btn btn-sm btn-primary" id="userDropdown" ngbDropdownToggle>{{user?.name + " "}}</button>
+                <div ngbDropdownMenu aria-labelledby="userDropdown">
+                  <button ngbDropdownItem routerLink="/user">User settings</button>
+                  <button ngbDropdownItem (click)="logOut()">Log out</button>
+                </div>
+              </div>
+            </li>
+          </ng-template>
+        </ng-container>
       </ul>
     </div>
   </div>
