@@ -68,11 +68,11 @@
             </div>
           </div>
           <div class="w-100 mb-3">
-            <button type="submit" class="btn btn-primary w-100" [disabled]="!logInForm.valid">Log me in!</button>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!logInForm.valid || loading">Log me in!</button>
           </div>
           <div class="w-100 mb-3 d-flex justify-content-between">
-            <a routerLink="/password-reset" disabled>Reset password</a>
-            <a routerLink="/password-reset" disabled>Create an account</a>
+            <a routerLink="/password-reset">Reset password</a>
+            <a routerLink="/register">Create an account</a>
           </div>
         </div>
       </div>
