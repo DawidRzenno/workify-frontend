@@ -12,10 +12,10 @@ export class Entry implements IEntry {
   name: string;
   startDate: Date;
   finishDate: Date;
-  constructor(id: string, name: string) {
+  constructor(id: string, name: string, startDate?: Date, finishDate?: Date) {
     this.id = id;
     this.name = name;
-    this.startDate = randomDate();
-    this.finishDate = randomDate();
+    this.startDate = startDate ? startDate : randomDate();
+    this.finishDate = finishDate ? finishDate : randomDate();
   }
 }
