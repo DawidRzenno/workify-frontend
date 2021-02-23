@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {IProject} from '../model/project.model';
-import {TimeTrackerService} from './time-tracker.service';
+import { Component, OnInit } from '@angular/core';
+import { IProject } from '../../models/project.model';
+import { TimeTrackerService } from './time-tracker.service';
 
 @Component({
   selector: 'app-time-tracker',
   templateUrl: './time-tracker.component.html',
-  styleUrls: ['./time-tracker.component.scss']
+  styleUrls: ['./time-tracker.component.scss'],
 })
 export class TimeTrackerComponent implements OnInit {
   projects: IProject[];
