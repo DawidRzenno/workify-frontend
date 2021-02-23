@@ -1,56 +1,68 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './home/home.component';
-import {LogInComponent} from './log-in/log-in.component';
-import {NotFoundComponent} from './not-found/not-found.component';
-import {TimeTrackerComponent} from './time-tracker/time-tracker.component';
-import {CalendarComponent} from './calendar/calendar.component';
-import {NotepadComponent} from './notepad/notepad.component';
-import {ProjectComponent} from './project/project.component';
-import {RegisterComponent} from './register/register.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { LogInComponent } from './components/log-in/log-in.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { TimeTrackerComponent } from './components/time-tracker/time-tracker.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { NotepadComponent } from './components/notepad/notepad.component';
+import { ProjectComponent } from './components/project/project.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from './components/guards/auth.guard';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'time-tracker',
-    component: TimeTrackerComponent
+    component: TimeTrackerComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'time-tracker/project/:id',
-    component: ProjectComponent
+    component: ProjectComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'calendar',
     component: CalendarComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'notepad',
-    component: NotepadComponent
+    component: NotepadComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'user/:id',
+    // there's a resolver needed for User
+    component: UserComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'log-in',
-    component: LogInComponent
+    component: LogInComponent,
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
   },
   {
     path: 'not-found',
-    component: NotFoundComponent
+    component: NotFoundComponent,
   },
   {
     path: '**',
-    redirectTo: 'not-found'
-  }
+    redirectTo: 'not-found',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}
