@@ -18,6 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { UserComponent } from './components/user/user.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { AlertModule } from './alert/alert.module';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    AlertModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

@@ -1,0 +1,7 @@
+<div
+  *ngFor="let alert of alerts"
+  [class]="'alert alert-' + alert.type.toString().toLowerCase()"
+  role="alert"
+>
+  {{ alert.message }}
+</div>
