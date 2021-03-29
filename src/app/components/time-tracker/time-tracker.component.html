@@ -1,0 +1,51 @@
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col-12 mb-4 d-flex justify-content-between">
+      <h3>Time Tracker</h3>
+      <app-alert></app-alert>
+      <div>
+        <div ngbDropdown class="d-inline-block mr-1">
+          <button class="btn btn-warning" id="entriesAmountDropdown" ngbDropdownToggle>{{entriesAmount}} entries</button>
+          <div ngbDropdownMenu aria-labelledby="entriesAmountDropdown">
+            <button ngbDropdownItem (click)="setAndStoreEntriesAmount(5)">5</button>
+            <button ngbDropdownItem (click)="setAndStoreEntriesAmount(5*2)">10</button>
+            <button ngbDropdownItem (click)="setAndStoreEntriesAmount(5*3)">15</button>
+            <button ngbDropdownItem (click)="setAndStoreEntriesAmount(5*4)">20</button>
+          </div>
+        </div>
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-warning" id="colWidthDropdown" ngbDropdownToggle>In {{12 / colWidth}} columns</button>
+          <div ngbDropdownMenu aria-labelledby="colWidthDropdown">
+            <button ngbDropdownItem (click)="setAndStoreColWidth(12)">1</button>
+            <button ngbDropdownItem (click)="setAndStoreColWidth(6)">2</button>
+            <button ngbDropdownItem (click)="setAndStoreColWidth(4)">3</button>
+            <button ngbDropdownItem (click)="setAndStoreColWidth(3)">4</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      [class]="'mb-4 col-' + colWidth"
+      *ngFor="let project of projects"
+    >
+      <div class="card h-100">
+        <div class="card-body">
+          <h4 class="mb-4"><a [routerLink]="'./project/' + project.id">
+            Project "{{project.name}}"
+          </a></h4>
+          <div class="ml-2 mb-3">
+            <h5>Recent entries</h5>
+            <p
+              *ngFor="let entry of project.entries.slice(0, entriesAmount)"
+            >
+              <span class="badge badge-primary mr-1">{{entry.startDate.toLocaleTimeString()}}</span>
+              <span class="badge badge-secondary mr-1">#{{entry.id}}</span>
+              <span>"{{entry.name}}"</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

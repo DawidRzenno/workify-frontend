@@ -1,0 +1,138 @@
+<form [formGroup]="entryForm" (ngSubmit)="createEntry()">
+  <div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-12 mb-4 d-flex">
+        <button
+          class="btn btn-dark mr-2 align-items-center"
+          routerLink="/time-tracker"
+        >
+          <fa-icon class="mr-1" [icon]="['fas', 'chevron-left']"></fa-icon>
+          Go back
+        </button>
+        <h3 class="mb-0"> Project "{{ project?.name }}"</h3>
+        <app-alert></app-alert>
+      </div>
+      <div class="mb-4 col-12">
+        <table class="table">
+          <thead>
+            <tr class="th--save-new">
+              <th class="vertical-align-middle" colspan="3">
+                <input
+                  class="form-control w-100"
+                  placeholder="Scrolling facebook"
+                  formControlName="name"
+                />
+              </th>
+              <th>
+                {{ '00:00:00' }}
+              </th>
+              <th class="vertical-align-middle">
+                  <button type="submit" class="btn btn-success mr-1">
+                    START / STOP
+                  </button>
+              </th>
+            </tr>
+            <tr>
+              <th scope="col">Description</th>
+              <th class="text-align-center" scope="col">Started at</th>
+              <th class="text-align-center" scope="col">Finished at</th>
+              <th class="text-align-center" scope="col">Time</th>
+              <th class="text-align-center" scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let entry of project?.entries" class="tr--darker-on-hover">
+              <ng-container
+                *ngIf="isEntrySelected(entry); then entryEdit; else entryShow"
+              ></ng-container>
+
+              <ng-template #entryShow>
+                <td class="vertical-align-middle" style="font-family: monospace; font-size: 14px" (click)="editEntry(entry)">
+                  {{ entry.name.slice(0,150) + (entry.name.length > 150 ? ' ...' : '') }}
+                </td>
+                <td class="vertical-align-middle text-align-center" (click)="editEntry(entry)">
+                  <h5 class="mb-0">
+                    {{ entry.startDateAsString }}
+                  </h5>
+                </td>
+                <td class="vertical-align-middle text-align-center" (click)="editEntry(entry)">
+                  <h5 class="mb-0">
+                    {{ entry.stopDateAsString }}
+                  </h5>
+                </td>
+                <td class="vertical-align-middle text-align-center" (click)="editEntry(entry)">
+                  <h5 class="mb-0">
+                    {{ entry.calculatedTimeAsString }}
+                  </h5>
+                </td>
+                <td class="vertical-align-middle">
+                  <div class="button-box">
+                    <button
+                      class="btn btn-danger"
+                      (click)="deleteEntry(entry)"
+                      [disabled]="loading.deleteEntry"
+                    >
+                      <fa-icon [icon]="['far', 'trash-alt']"></fa-icon>
+                    </button>
+                  </div>
+                </td>
+              </ng-template>
+
+              <ng-template #entryEdit>
+                <td class="vertical-align-middle">
+                  <input
+                    type="text"
+                    class="form-control w-100"
+                    placeholder="Scrolling facebook"
+                    [(ngModel)]="entry.name"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </td>
+                <td class="vertical-align-middle">
+                  <input
+                    type="text"
+                    class="form-control w-100"
+                    placeholder="9:00"
+                    [(ngModel)]="entry.startDate"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </td>
+                <td class="vertical-align-middle">
+                  <input
+                    type="text"
+                    class="form-control w-100"
+                    placeholder="17:00"
+                    [(ngModel)]="entry.stopDate"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </td>
+                <td class="vertical-align-middle">
+                  <div class="button-box">
+                    <button
+                      class="btn btn-outline-primary mr-1"
+                      [disabled]="loading.saveNewEntry"
+                      (click)="updateEntry(entry)"
+                    >
+                      <fa-icon [icon]="['far', 'save']"></fa-icon>
+                    </button>
+                    <button
+                      class="btn btn-outline-danger"
+                      (click)="cancelEditingEntry()"
+                    >
+                      <fa-icon [icon]="['far', 'times-circle']"></fa-icon>
+                    </button>
+                  </div>
+                </td>
+              </ng-template>
+            </tr>
+            <tr class="tr--footer">
+              <td colspan="4">
+                <h6 class="text-align-center">All entries shown!</h6>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</form>

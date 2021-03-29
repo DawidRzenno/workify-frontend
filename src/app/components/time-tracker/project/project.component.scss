@@ -1,0 +1,15 @@
+.button-box {
+  min-width: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.th--save-new, .tr--footer {
+  background: whitesmoke;
+}
+
+.tr--darker-on-hover:hover {
+  background: whitesmoke;
+  cursor: pointer;
+}
+

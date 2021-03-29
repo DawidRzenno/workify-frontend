@@ -1,0 +1,17 @@
+.framework-name {
+  font-size: 25px;
+}
+
+.tool-name {
+  font-size: 15px;
+}
+
+.blink-animation {
+  animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
